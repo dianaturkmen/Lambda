@@ -20,6 +20,8 @@ public class LambdaEng04 {
         System.out.println(getMultiplicationFromTwoToEleven());
         System.out.println(calculateFactorial(5));
         System.out.println(calculateFactorial01(-1));
+        System.out.println(sumOfIntegersInGivenRange(11,100));
+        System.out.println(findSumOfDigitForTheIntegersInTheGivenRange(23,32)); //68
 
     }
     //Create a method to find sum of integers from 7 to100
@@ -42,6 +44,29 @@ public class LambdaEng04 {
         return x>0 ? IntStream.rangeClosed(1,5).reduce(1,Math::multiplyExact):
                 "Do not use negative numbers in factoriel op";
 }
+    // Create a method to calculate the sum of even integers between given two integers
+    public static int sumOfIntegersInGivenRange(int s, int e){
+       int x=0;
+       if(s>e){
+           x=s;
+           s=e;
+           e=x;
+       }
+       return IntStream.rangeClosed(s,e).filter(Utils::checkToBeEven).sum();
+    }
+    //create amethod to calculate the sum of digits of every integers between given two integers
+    public static int findSumOfDigitForTheIntegersInTheGivenRange(int s, int e){
+        int x=0;
+        if(s>e){
+            x=s;
+            s=e;
+            e=x;
+        }
+        return IntStream.rangeClosed(s,e).map(Utils::getSumOfDigits).sum();
+    }
+
+
+
 }
 
 
